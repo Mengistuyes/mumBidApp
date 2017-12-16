@@ -31,6 +31,8 @@ public class Auction {
 	
 	private Double InitialPrice;
 	
+	private Double ExpectedPrice;
+	
 	@Enumerated(EnumType.STRING)
 	private String AuctionStatus;
 	
@@ -83,6 +85,14 @@ public class Auction {
 
 	public Double getInitialPrice() {
 		return InitialPrice;
+	}
+
+	public Double getExpectedPrice() {
+		return ExpectedPrice;
+	}
+
+	public void setExpectedPrice(Double expectedPrice) {
+		ExpectedPrice = expectedPrice;
 	}
 
 	public void setInitialPrice(Double initialPrice) {

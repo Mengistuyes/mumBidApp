@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -19,10 +20,12 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration 
 @EnableTransactionManagement
 @PropertySource("resources/hibernate.properties")
+@EnableJpaRepositories(basePackages="mum.edu.cs544.mumBidApp.DAO")
 public class DatabaseConfig {
 	@Autowired
-        private Environment env;	
-	@Bean
+    private Environment env;
+	
+	@Bean(name="entityManagerFactory")
 	public LocalContainerEntityManagerFactoryBean getEntityManagerFactoryBean() {
 		LocalContainerEntityManagerFactoryBean lcemfb = new LocalContainerEntityManagerFactoryBean();
 		lcemfb.setJpaVendorAdapter(getJpaVendorAdapter());
@@ -37,7 +40,7 @@ public class DatabaseConfig {
 		JpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
 		return adapter;
 	}
-        @Bean
+    @Bean
 	public DataSource getDataSource() {
 	        BasicDataSource dataSource = new BasicDataSource();
 	        dataSource.setDriverClassName(env.getProperty("database.driverClassName"));

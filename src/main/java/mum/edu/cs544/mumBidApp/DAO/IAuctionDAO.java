@@ -1,12 +1,12 @@
 package mum.edu.cs544.mumBidApp.DAO;
 
-import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import org.springframework.data.repository.CrudRepository;
+import mum.edu.cs544.mumBidApp.model.Auction;
 
-import mum.edu.cs544.model.Auction;
 
-public interface IAuctionDAO extends CrudRepository<Auction, Long> {
+public interface IAuctionDAO extends JpaRepository<Auction, Long> {
 	//public List<Auction> getAllAuction();
 
 	public void saveAuction(Auction auction);

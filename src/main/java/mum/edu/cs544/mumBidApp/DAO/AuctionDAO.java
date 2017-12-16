@@ -2,7 +2,6 @@ package mum.edu.cs544.mumBidApp.DAO;
 
 import java.util.List;
 
-import mum.edu.cs544.model.Auction;
 
 /*public class AuctionDAO implements IAuctionDAO {
 

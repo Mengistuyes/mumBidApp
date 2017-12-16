@@ -2,7 +2,7 @@ package mum.edu.cs544.mumBidApp.service;
 
 import java.util.List;
 
-import mum.edu.cs544.model.Auction;
+import mum.edu.cs544.mumBidApp.model.Auction;
 
 public interface IAuctionService {
 	public List<Auction> getAllAuction();

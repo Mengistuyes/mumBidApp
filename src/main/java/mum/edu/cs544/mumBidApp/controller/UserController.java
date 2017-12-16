@@ -17,8 +17,10 @@ public class UserController {
 		return "register";
 	}
 	
+	//@RequestMapping(value="/registerUser")
 	@RequestMapping(value="/registerUser")
 	public String registerUser(@Valid User user, BindingResult result, ModelMap model) {
 		return "register";
+		//return "home";
 	}
 }

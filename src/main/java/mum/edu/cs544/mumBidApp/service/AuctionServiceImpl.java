@@ -2,43 +2,32 @@ package mum.edu.cs544.mumBidApp.service;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-//import mum.edu.cs544.dao.AuctionDAO;
-import mum.edu.cs544.dao.IAuctionDAO;
-import mum.edu.cs544.model.Auction;
-import mum.edu.cs544.model.AuctionStatus;
+import mum.edu.cs544.mumBidApp.DAO.IAuctionDAO;
+import mum.edu.cs544.mumBidApp.model.Auction;
+import mum.edu.cs544.mumBidApp.model.AuctionStatus;
+
 @Service
 public class AuctionServiceImpl implements IAuctionService {
 	@Autowired
 	private IAuctionDAO auctionDAO;
-	
-	public void addAuction(Auction auction) {
-		auctionDAO.saveAuction(auction);
-	}
-	
-	@Override
-	@Transactional
+
 	public List<Auction> getAllAuction() {
-		// TODO Auto-generated method stub
-		return null;
+		return (List<Auction>) auctionDAO.findAll();
 	}
 
-	@Override
-	@Transactional
 	public void saveAuction(Auction auction) {
-		// TODO Auto-generated method stub
+		auction.setAuctionStatus(AuctionStatus.PENDING.toString());
+		auctionDAO.save(auction);
 		
 	}
 
-	@Override
-	@Transactional
 	public Auction getAuction(Long auctionId) {
-		// TODO Auto-generated method stub
-		return null;
+		return auctionDAO.findOne(auctionId);
 	}
+	
+		
 
 }

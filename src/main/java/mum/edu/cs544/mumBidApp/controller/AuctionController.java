@@ -10,28 +10,27 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import mum.edu.cs544.mumBidApp.model.Auction;
+import mum.edu.cs544.mumBidApp.service.IAuctionService;
 
-import mum.edu.cs544.model.Auction;
-import mum.edu.cs544.service.IAuctionService;
 
 @Controller
 public class AuctionController {
 	@Autowired
 	private IAuctionService auctionService;
 	
-	@Autowired(required=true)
-	@Qualifier(value="AuctionService")
+	@Autowired
 	public void setAuctionService(IAuctionService auctionService){
 		this.auctionService =auctionService;
 	}
 	
-	@RequestMapping(value= "/auction/add", method = RequestMethod.POST)
+	/*@RequestMapping(value= "/auction/add", method = RequestMethod.POST)
 	public String addAuction(@ModelAttribute("auction") Auction auction){
-			auctionService.saveAuction(auction);		
+		//	auctionService.saveAuction(auction);		
 		return "redirect:/auctions";
 		
-	}
-	//Active 
+	}*/
+
 	@RequestMapping(value = { "/activeAuctions" }, method = RequestMethod.GET)
 	public String activeAuction(Model model) {
 		System.out.println("activeAuctions");
