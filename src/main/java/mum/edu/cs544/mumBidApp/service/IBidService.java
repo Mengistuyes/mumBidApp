@@ -10,7 +10,7 @@ import mum.edu.cs544.mumBidApp.model.Bid;
 public interface IBidService {
 	public List<Bid> getAllBid();
 
-	public void saveAuction(Bid bid);
+	public void save(Bid bid);
 
 	public Bid getBid(Long bidId);
 	

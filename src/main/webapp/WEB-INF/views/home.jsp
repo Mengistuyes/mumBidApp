@@ -18,6 +18,6 @@
         <!-- <img src="clothing.jpg" alt="Flowers in Chania">
         <img src="shoesAndBoots.jpg" alt="Flowers in Chania">
         <img src="all.jpg" alt="Flowers in Chania"> -->
-        
+        <a href="<c:url value='/auction/add' />">Add Auction</a>
     </body>
 </html>

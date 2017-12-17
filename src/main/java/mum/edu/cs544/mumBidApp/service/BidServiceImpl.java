@@ -14,18 +14,17 @@ public class BidServiceImpl implements IBidService {
 	IBidDAO bidDAO;
 	
 	public List<Bid> getAllBid() {
-		// TODO Auto-generated method stub
-		return null;
+		return (List<Bid>)bidDAO.findAll();
 	}
 
-	public void saveAuction(Bid bid) {
-		// TODO Auto-generated method stub
-		
+	public void save(Bid bid) {
+		Auction auction=bid.getAuction();
+		auction.setCurrentBidAmount(bid.getBidAmount());
+		bidDAO.save(bid);
 	}
 
-	public Bid getBid(Long bidId) {
-		// TODO Auto-generated method stub
-		return null;
+	public Bid getBid(Long bidId) {	
+		return bidDAO.findOne(bidId);
 	}
 
 }

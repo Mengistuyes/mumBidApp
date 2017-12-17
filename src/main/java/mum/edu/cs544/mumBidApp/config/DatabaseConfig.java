@@ -43,13 +43,13 @@ public class DatabaseConfig {
     @Bean
 	public DataSource getDataSource() {
 	        BasicDataSource dataSource = new BasicDataSource();
-	        dataSource.setDriverClassName(env.getProperty("database.driverClassName"));
-	        dataSource.setUrl(env.getProperty("database.url"));
-	        dataSource.setUsername(env.getProperty("database.username"));
-	        dataSource.setPassword(env.getProperty("database.password"));
+	        dataSource.setDriverClassName(env.getProperty("jdbc.driverClassName"));
+	        dataSource.setUrl(env.getProperty("jdbc.url"));
+	        dataSource.setUsername(env.getProperty("jdbc.username"));
+	        dataSource.setPassword(env.getProperty("jdbc.password"));
 	        return dataSource;
 	}
-	@Bean
+	@Bean(name="transactionManager")
 	public PlatformTransactionManager txManager(){
 		JpaTransactionManager jpaTransactionManager = new JpaTransactionManager(
 				getEntityManagerFactoryBean().getObject());

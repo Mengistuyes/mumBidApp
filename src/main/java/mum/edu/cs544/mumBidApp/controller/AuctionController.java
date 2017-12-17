@@ -24,7 +24,7 @@ public class AuctionController {
 		this.auctionService =auctionService;
 	}
 	
-	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/auction" }, method = RequestMethod.GET)
 	public String homeAuction(Model model) {
 		List<Auction> auctions = auctionService.getAllAuction();
 		//auctions.addAll(auctionService.getAllFutureAuctions());
@@ -32,10 +32,10 @@ public class AuctionController {
 		return "auction";
 	}
    @RequestMapping(value= "/auction/add", method = RequestMethod.POST)
-	public String addAuction(@ModelAttribute("auction") Auction auction){
-		//	auctionService.saveAuction(auction);		
-	//	return "redirect:/auctions";		
-		return "redirect:/auctions";
+	public String addAuction(@ModelAttribute("addNewAuction") Auction auction){
+			auctionService.saveAuction(auction);		
+	
+		return "redirect:/auction";
 	}
 	@RequestMapping(value = { "/activeAuctions" }, method = RequestMethod.GET)
 	public String activeAuction(Model model) {

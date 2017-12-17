@@ -8,7 +8,7 @@
  
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>Employee Registration Form</title>
+    <title> User Registration Form</title>
  
 <style>
  
@@ -76,7 +76,7 @@
     </form:form>
     <br/>
     <br/>
-    Go back to <a href="<c:url value='/list' />">List of All Employees</a>
+    Go back to <a href="<c:url value='/list' />">List of All Users</a>
 </body>
 </html>
 WEB-IN

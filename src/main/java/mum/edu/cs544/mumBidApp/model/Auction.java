@@ -33,6 +33,8 @@ public class Auction {
 	
 	private Double ExpectedPrice;
 	
+	private Double CurrentBidAmount;
+	
 	@Enumerated(EnumType.STRING)
 	private AuctionStatus status;
 	
@@ -81,6 +83,22 @@ public class Auction {
 
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
+	}
+
+	public Double getCurrentBidAmount() {
+		return CurrentBidAmount;
+	}
+
+	public void setCurrentBidAmount(Double currentBidAmount) {
+		CurrentBidAmount = currentBidAmount;
+	}
+
+	public AuctionStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(AuctionStatus status) {
+		this.status = status;
 	}
 
 	public Double getInitialPrice() {
