@@ -19,7 +19,7 @@
 </head>
  
 <body>
-<form:form modelAttribute="addNewAuction" action="../add" method="POST">
+<form:form modelAttribute="addNewAuction" action="add" method="POST">
 		<fieldset>
 			<legend>Auction Registration Form</legend>
 			<p>

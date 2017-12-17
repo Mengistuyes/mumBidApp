@@ -21,9 +21,9 @@ public class AuctionServiceImpl implements IAuctionService {
 		return (List<Auction>) auctionDAO.findAll();
 	}
 	@Transactional
-	public void saveAuction(Auction auction) {
+	public Auction saveAuction(Auction auction) {
 		auction.setAuctionStatus(AuctionStatus.PENDING);
-		auctionDAO.save(auction);	
+		return auctionDAO.save(auction);	
 	}
 	@Transactional
 	public Auction getAuction(Long auctionId) {

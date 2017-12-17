@@ -56,13 +56,13 @@ public class AuctionController {
 	}
 	
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String processAuction(@Valid @ModelAttribute("addNewAuction") Auction auction, BindingResult result,
+	public String addAuction(@Valid @ModelAttribute("addNewAuction") Auction auction, BindingResult result,
 			Model model, HttpServletRequest request, RedirectAttributes redirectAttributes) {
 			
 		//	auction.setImagePath(servletContext.getServletContextName() + "/resource/images/" + auction.getId() + ".png");
-			auction.setImagePath(servletContext.getServletContextName() + "/mumBidApp/src/main/webapp/resources/images/" + auction.getId() + ".png");
+			auction.setImagePath(servletContext.getServletContextName() + "/mumBidApp/src/main/webapp/resources/images/" + auction.getId() + ".jpg");
 			
-		//	auction = auctionService.saveAuction(auction);
+		auction = auctionService.saveAuction(auction);
 
 		return "redirect:/auction/add/" + auction.getId();
 
