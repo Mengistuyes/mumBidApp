@@ -29,14 +29,16 @@ public class Auction {
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
 	private Date endDate;
 	
-	private Double InitialPrice;
+	private Double minimumBidAmount;
 	
-	private Double ExpectedPrice;
+	private Double expectedPrice;
 	
-	private Double CurrentBidAmount;
+	private Double currentBidAmount;
 	
 	@Enumerated(EnumType.STRING)
 	private AuctionStatus status;
+	
+	private String imagePath;
 	
 	//private List<Bid> listOfBids;
 	
@@ -86,11 +88,11 @@ public class Auction {
 	}
 
 	public Double getCurrentBidAmount() {
-		return CurrentBidAmount;
+		return currentBidAmount;
 	}
 
 	public void setCurrentBidAmount(Double currentBidAmount) {
-		CurrentBidAmount = currentBidAmount;
+		currentBidAmount = currentBidAmount;
 	}
 
 	public AuctionStatus getStatus() {
@@ -101,20 +103,20 @@ public class Auction {
 		this.status = status;
 	}
 
-	public Double getInitialPrice() {
-		return InitialPrice;
+	public Double getMinimumBidAmount() {
+		return minimumBidAmount;
+	}
+
+	public void setMinimumBidAmount(Double minimumBidAmount) {
+		this.minimumBidAmount = minimumBidAmount;
 	}
 
 	public Double getExpectedPrice() {
-		return ExpectedPrice;
+		return expectedPrice;
 	}
 
 	public void setExpectedPrice(Double expectedPrice) {
-		ExpectedPrice = expectedPrice;
-	}
-
-	public void setInitialPrice(Double initialPrice) {
-		InitialPrice = initialPrice;
+		this.expectedPrice = expectedPrice;
 	}
 
 	public AuctionStatus getAuctionStatus() {
@@ -125,6 +127,15 @@ public class Auction {
 		status = auctionStatus;
 	}
 
+	public String getImagePath() {
+		return imagePath;
+	}
+
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
+	}
+
+	
 	/*public List<Bid> getListOfBids() {
 		return listOfBids;
 	}

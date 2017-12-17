@@ -27,19 +27,19 @@
 			</p>
 			
 			<div class="form-group">
-				<label for="itemName">Item Name: </label>
-				<form:input path="itemName" />
+				<label for="item">Item Name: </label>
+				<form:input path="item" />
 			<div>
 			<div class="form-group">
 				<label for="itemDescription">Dtem Description: </label>
 				<form:input path="itemDescription" />
 			<div>
 			<p>
-					<label for="image">Item Image</label>
-					<form:input id="image" path="image" name="image" type="file" />
+					<label for="imagePath">Item Image</label>
+					<form:input id="imagePath" path="imagePath" name="imagePath" type="file" />
 			<div class="form-group">
-			<label for="minBidAmount">Minimum Bid Amount: </label>
-				<form:input path="minBidAmount" />
+			<label for="minimumBidAmount">Minimum Bid Amount: </label>
+				<form:input path="minimumBidAmount" />
 			</div>
 			<div class="form-group">
 				<label><span>Start Date:</span></label>
@@ -60,7 +60,7 @@
 				<form:errors path="endDate" cssStyle="color : red;" />
 			</div>
 			<p>
-				<input type="submit" value="Register Auction" class="buttonUrl" />
+				<input type="submit" value="submit" class="buttonUrl" />
 			</p>
 		</fieldset>
 
