@@ -2,8 +2,10 @@ package mum.edu.cs544.mumBidApp.service;
 
 import java.util.List;
 
-import mum.edu.cs544.mumBidApp.model.Auction;
+import org.springframework.stereotype.Service;
 
+import mum.edu.cs544.mumBidApp.model.Auction;
+@Service
 public interface IAuctionService {
 	public List<Auction> getAllAuction();
 

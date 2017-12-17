@@ -9,9 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import mum.edu.cs544.mumBidApp.model.User;
 
+//import mum.edu.cs544.mumBidApp.model.User;
+
 @Controller
 public class UserController {
-	
 	@RequestMapping(value="/login")
 	public String login() {
 		return "register";
@@ -21,6 +22,5 @@ public class UserController {
 	@RequestMapping(value="/registerUser")
 	public String registerUser(@Valid User user, BindingResult result, ModelMap model) {
 		return "register";
-		//return "home";
 	}
 }

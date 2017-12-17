@@ -9,7 +9,6 @@ import mum.edu.cs544.mumBidApp.model.Auction;
 public interface IAuctionDAO extends JpaRepository<Auction, Long> {
 	//public List<Auction> getAllAuction();
 
-	public void saveAuction(Auction auction);
 
 	//public Auction getAuction(Long auctionId);
 	

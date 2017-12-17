@@ -75,7 +75,7 @@
     </form:form>
     <br/>
     <br/>
-    Go back to <a href="<c:url value='/list' />">List of All Auctions</a>
+    Go back to <a href="<c:url value='/home' />">List of All Auctions</a>
 </body>
 </html>
 WEB-IN

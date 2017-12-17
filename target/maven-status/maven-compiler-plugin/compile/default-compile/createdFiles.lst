@@ -1,8 +1,11 @@
 mum\edu\cs544\mumBidApp\model\AuctionStatus.class
 mum\edu\cs544\mumBidApp\config\MvcConfiguration.class
+mum\edu\cs544\mumBidApp\service\TestService.class
+mum\edu\cs544\mumBidApp\model\Response.class
 mum\edu\cs544\mumBidApp\service\AuctionServiceImpl.class
 mum\edu\cs544\mumBidApp\service\IAuctionService.class
 mum\edu\cs544\mumBidApp\DAO\IBidDAO.class
+mum\edu\cs544\mumBidApp\DAO\TestDao.class
 mum\edu\cs544\mumBidApp\model\User.class
 mum\edu\cs544\mumBidApp\service\IBidService.class
 mum\edu\cs544\mumBidApp\controller\BidController.class
@@ -12,6 +15,7 @@ mum\edu\cs544\mumBidApp\model\Address.class
 mum\edu\cs544\mumBidApp\model\Bid.class
 mum\edu\cs544\mumBidApp\config\DatabaseConfig.class
 mum\edu\cs544\mumBidApp\controller\AuctionController.class
+mum\edu\cs544\mumBidApp\controller\TestController.class
 mum\edu\cs544\mumBidApp\controller\UserController.class
 mum\edu\cs544\mumBidApp\DAO\IAuctionDAO.class
 mum\edu\cs544\mumBidApp\controller\HomeController.class

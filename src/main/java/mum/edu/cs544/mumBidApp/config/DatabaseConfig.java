@@ -31,7 +31,7 @@ public class DatabaseConfig {
 		lcemfb.setJpaVendorAdapter(getJpaVendorAdapter());
 		lcemfb.setDataSource(getDataSource());
 		lcemfb.setPersistenceUnitName("myJpaPersistenceUnit");
-		lcemfb.setPackagesToScan("com.concretepage.entity");
+		lcemfb.setPackagesToScan("mum.edu.cs544.mumBidApp");
 		lcemfb.setJpaProperties(jpaProperties());
 		return lcemfb;
 	}

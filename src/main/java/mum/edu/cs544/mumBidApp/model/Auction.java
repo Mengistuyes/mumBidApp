@@ -34,7 +34,7 @@ public class Auction {
 	private Double ExpectedPrice;
 	
 	@Enumerated(EnumType.STRING)
-	private String AuctionStatus;
+	private AuctionStatus status;
 	
 	//private List<Bid> listOfBids;
 	
@@ -99,12 +99,12 @@ public class Auction {
 		InitialPrice = initialPrice;
 	}
 
-	public String getAuctionStatus() {
-		return AuctionStatus;
+	public AuctionStatus getAuctionStatus() {
+		return status;
 	}
 
-	public void setAuctionStatus(String auctionStatus) {
-		AuctionStatus = auctionStatus;
+	public void setAuctionStatus(AuctionStatus auctionStatus) {
+		status = auctionStatus;
 	}
 
 	/*public List<Bid> getListOfBids() {
