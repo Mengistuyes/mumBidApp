@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<%@ include file="header.jsp"%>
 </head>
 <body>
+
 	<table class="table table-striped">
 			<tr>
 				<th>Item Name</th>
@@ -30,5 +31,6 @@
 			</c:forEach>
 
 		</table>
+		<%@ include file="footer.jsp"%>
 </body>
 </html>

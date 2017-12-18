@@ -45,17 +45,20 @@
 			</p>
 			
 			<div class="form-group">
-				<label for="item">Item Name:           </label>
+				<label for="item">Item Name: </label>
 				<form:input path="item" />
 			<div>
 			<div class="form-group">
-				<label for="itemDescription">Item Description:   </label>
+				<label for="itemDescription">Item Description: </label>
 				<form:input path="itemDescription" />
 			
 			<div class="form-group">
 			<label for="minimumBidAmount">Minimum Bid Amount: </label>
 				<form:input path="minimumBidAmount" />
 			</div>
+			<p>Start Date: <input type="text" id="startDate"></p>
+			<p>End Date: <input type="text" id="endDate"></p>
+			
 			<div>
 			<p>
 					<label for="imagePath">Item Image</label>
