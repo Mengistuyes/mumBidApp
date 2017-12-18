@@ -60,6 +60,10 @@ public class AuctionServiceImpl implements IAuctionService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public List<Auction> getAllApprovedAuctions() {
+		return auctionDAO.getAllApprovedAuctions(AuctionStatus.APPROVED);	
+	}
 		
 
 }

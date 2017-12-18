@@ -42,7 +42,7 @@ public class BidController {
 		Auction auction = auctionServiceImpl.getAuction(auctionId);
 		bid.setAuction(auction);
 		model.addAttribute("auction", auction);
-		return "bidding";
+		return "biddingPage";
 	}
 
 	@RequestMapping(value = "/auction/bid/{auctionId}", method = RequestMethod.POST)

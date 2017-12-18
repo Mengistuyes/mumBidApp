@@ -24,6 +24,8 @@
 				<th>Item Name</th>
 				<th>Item Description</th>
 				<th>Minimum Bidding Price</th>
+				<th>Start Date</th>
+				<th>End Date</th>
 				<th>Auction Status</th>
 			</thead>
 
@@ -33,14 +35,12 @@
 					<td width="160px">${auction.itemDescription}</td>
 					<td width="150px">${auction.minimumBidAmount}</td>
 					<td width="160px">${auction.currentBidAmount}</td>
+					<td width="160px">${auction.startDate}</td>
+					<td width="160px">${auction.endDate}</td>
 					<td width="120px">${auction.status}</td>
 					<td align="right"><spring:url
-							value="/auction/approve/${auction.id}" var="auctionApprove" />
-						<a type="button" class="buttonUrl" href="${auctionApprove}">Edit</a>
-						<spring:url value="/auction/reject/${auction.id}"
-							var="notApproved" /> <a type="button" class="buttonUrl"
-						href="${notApproved}">Cancel</a></td>
-					<td><button onclick="approve(${auction.id})">Approve</button></td>
+							value="/auction/bid/${auction.id}" var="auctionApprove" />
+					</td>
 				</tr>
 			</c:forEach>
 

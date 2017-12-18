@@ -41,9 +41,8 @@ public class AuctionController {
 	
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public String homeAuction(Model model) {
-		//List<Auction> auctions = auctionService.getAllAuction();
-		//auctions.addAll(auctionService.getAllFutureAuctions());
-		//model.addAttribute("auctions", auctions);
+		List<Auction> auctions = auctionService.getAllApprovedAuctions();
+		model.addAttribute("auctions", auctions);
 		return "home";
 	}
 	
@@ -81,7 +80,6 @@ public class AuctionController {
 			throw new fileUploadException("Saving the image was not successful", ex);
 		}
 	}
-		//	auction.setImagePath(servletContext.getServletContextName() + "/resource/images/" + auction.getId() + ".png");
 		//	auction.setImagePath(servletContext.getServletContextName() + "/mumBidApp/src/main/webapp/resources/images/" + auction.getId() + ".jpg");
 		auction.setImageName(randomUUIDString);
 		auction.setImagePath(servletContext.getServletContextName() + "/resources/images/" + randomUUIDString + ".jpg");
@@ -90,17 +88,13 @@ public class AuctionController {
 		return "redirect:/auction/add/" + auction.getId();
 
 }
-   /*@RequestMapping(value= "/auction/add", method = RequestMethod.POST)
-	public String addAuction(@ModelAttribute("addNewAuction") Auction auction){
-			auctionService.saveAuction(auction);		
-	
-		return "redirect:/auction";
-	}*/
+  
 	@RequestMapping(value = { "/activeAuctions" }, method = RequestMethod.GET)
 	public String activeAuction(Model model) {
 		System.out.println("activeAuctions");
-		//	List<Auction> auctions = auctionService.getAuctionByStatus();
-		//model.addAttribute("auctions", auctions);
+	//	List<Auction> auctions = auctionService.getAuctionByStatus();
+		List<Auction> auctions = auctionService.getAllApprovedAuctions();
+		model.addAttribute("auctions", auctions);
 		return "home";
 	}
 
