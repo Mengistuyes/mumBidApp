@@ -10,12 +10,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.multipart.MultipartFile;
 @Entity
 public class Auction {
 	@Id @GeneratedValue
-	private int Id;
+	private long Id;
 	
 	private String item;
 	
@@ -40,6 +42,11 @@ public class Auction {
 	
 	private String imagePath;
 	
+	@Transient
+	private MultipartFile image;
+	
+	
+	private String imageName;
 	//private List<Bid> listOfBids;
 	
 	public Auction()
@@ -47,11 +54,11 @@ public class Auction {
 		
 	}
 
-	public int getId() {
+	public long getId() {
 		return Id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		Id = id;
 	}
 
@@ -133,6 +140,22 @@ public class Auction {
 
 	public void setImagePath(String imagePath) {
 		this.imagePath = imagePath;
+	}
+
+	public MultipartFile getImage() {
+		return image;
+	}
+
+	public void setImage(MultipartFile image) {
+		this.image = image;
+	}
+
+	public String getImageName() {
+		return imageName;
+	}
+
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
 	}
 
 	

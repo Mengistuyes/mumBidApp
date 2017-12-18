@@ -23,6 +23,7 @@ public class AuctionServiceImpl implements IAuctionService {
 	@Transactional
 	public Auction saveAuction(Auction auction) {
 		auction.setAuctionStatus(AuctionStatus.PENDING);
+	//	auction.setImagePath(auction.getImagePath() + auction.getId() + ".jpg");
 		return auctionDAO.save(auction);	
 	}
 	@Transactional
@@ -30,6 +31,39 @@ public class AuctionServiceImpl implements IAuctionService {
 		return auctionDAO.findOne(auctionId);
 	}
 	
+	
+	@Override
+	public Auction approveAuction(Long auctionId) {
+
+		Auction auction = auctionDAO.findOne(auctionId);
+		auction.setStatus(AuctionStatus.APPROVED);
+		return auctionDAO.save(auction);
+	}
+	
+	@Override
+	public Auction approveAuction(Auction auction) {
+
+		auction.setStatus(AuctionStatus.APPROVED);
+		return auctionDAO.save(auction);
+	}
+
+	@Override
+	public Auction rejectAuction(Long auctionId) {
+		Auction auction = auctionDAO.findOne(auctionId);
+		auction.setStatus(AuctionStatus.CANCELLED);
+		return auctionDAO.save(auction);
+
+	}
+
+	@Override
+	public List<Auction> findByStatus(String status){
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public List<Auction> getAllApprovedAuctions() {
+		return auctionDAO.getAllApprovedAuctions(AuctionStatus.APPROVED);	
+	}
 		
 
 }
