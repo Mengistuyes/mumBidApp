@@ -3,12 +3,15 @@ package mum.edu.cs544.mumBidApp.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import mum.edu.cs544.mumBidApp.DAO.IBidDAO;
 import mum.edu.cs544.mumBidApp.model.Auction;
 import mum.edu.cs544.mumBidApp.model.Bid;
 
-
+@Service
+@Transactional
 public class BidServiceImpl implements IBidService {
 	@Autowired
 	IBidDAO bidDAO;

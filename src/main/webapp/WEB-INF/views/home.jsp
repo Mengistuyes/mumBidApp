@@ -10,6 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Home</title>
+        <%@ include file="header.jsp"%>
     </head>
     <body>	
     	<!-- <a href="views/electronic.jsp" ac>Electronic Items</a>
@@ -17,46 +18,39 @@
     	<a href="shoesAndClothing.jsp">Shoes and Boots</a>
         <h1>Hello World!</h1>
         <p>This is the homepage!</p> -->
-        
-        <!-- <img src="/resources/images/bidding.jpg" width="100" height="100"/> -->
+        <!-- <img src="/resources/images/bidding.jpg" width="100" height="100"/> --> 
         <!-- <img src="clothing.jpg" alt="Flowers in Chania">
         <img src="shoesAndBoots.jpg" alt="Flowers in Chania">
         <img src="all.jpg" alt="Flowers in Chania"> -->
-        <a href="<spring:url value="add" />">Add Auciton</a>
-        <a href="<spring:url value="auction/bid" />">Bidding Page</a>
-        
+        <div align="center">
+	        <a href="<spring:url value="add" />"><button type="button" class="btn btn-primary">Add Auction</button></a>
+	        <a href="<spring:url value="getAllAuctions" />"><button type="button" class="btn btn-success">This page displays All Auctions</button></a>
+	        <a href="<spring:url value="/auction/bid" />"><button type="button" class="btn btn-primary">Bidding Page</button></a></a>
+        </div>
+        <div>
+        <hr width=100%  align=left> 
+<br><br>
+</div>
+<div>	
+		</div>
+	<c:forEach items="${auctions}" var="auction">
+	
 
-        <div class="panel panel-default">
-  <!-- Default panel contents -->
-  <div class="panel-heading">List of Auction</div>
-  <div class="panel-body">
-    <p>...</p>
-  </div>
-
-  <!-- Table -->
-	<table class="table">
-			<thead>
-				<th>Item Name</th>
-				<th>Item Description</th>
-				<th>Minimum Bidding Price</th>
-				<th>Auction Status</th>
-			</thead>
-
-			<c:forEach items="${auctions}" var="auction">
-				<tr>
-					<td width="150px">${auction.item}</td>
-					<td width="160px">${auction.itemDescription}</td>
-					<td width="150px">${auction.minimumBidAmount}</td>
-					<td width="160px">${auction.currentBidAmount}</td>
-					<td width="120px">${auction.status}</td>
-					<td align="right"><spring:url
-							value="bid/${auction.id}" var="ApprovedList" />
-						<a type="button" class="buttonUrl" href="${ApprovedList}">Go to Bidding -></a>
-						</td>
-				</tr>
-			</c:forEach>
-
-		</table>
+	<div class="row">
+	<div class="col-md-3">
+		<div>Item Name:${auction.item}</div>
+		<div>Item Description:${auction.itemDescription}</div>		
+		<div><div>Minimum Bidding Price:${auction.minimumBidAmount}</div>
+	</div>
+	<div class="col-md-3">
+		<img src="<c:url value="/resource/images/fridge.jpg"></c:url>" alt="fridge"/>	
+		<img src="<c:url value="/resources/images/Logo.jpg"></c:url>" alt="logo"/>
+		<div><spring:url value="/auction/bid/${auction.id}" var="ApprovedList" />
+		<a type="button" class="buttonUrl" href="${ApprovedList}">Go to Bidding -></a></div>
+	</div>
+	</div>
+	</c:forEach>
+		
 </div>
     </body>
 </html>

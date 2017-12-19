@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import mum.edu.cs544.mumBidApp.model.Auction;
 import mum.edu.cs544.mumBidApp.model.AuctionStatus;
 
-
+@Repository
 public interface IAuctionDAO extends JpaRepository<Auction, Long> {
 	
 	@Query("Select a from Auction a where a.status = :status")

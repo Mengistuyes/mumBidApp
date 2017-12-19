@@ -10,7 +10,12 @@
 <%@ include file="header.jsp"%>
 </head>
 <body>
-
+<button type="button" class="btn btn-primary">Primary</button>
+<button type="button" class="btn btn-secondary">Secondary</button>
+<button type="button" class="btn btn-success">Success</button>
+<button type="button" class="btn btn-danger">Danger</button>
+<button type="button" class="btn btn-warning">Warning</button>
+<button type="button" class="btn btn-info">Info</button>
 <div class="panel panel-default">
   <!-- Default panel contents -->
   <div class="panel-heading">List of Auction</div>
@@ -38,6 +43,7 @@
 					<td width="160px">${auction.startDate}</td>
 					<td width="160px">${auction.endDate}</td>
 					<td width="120px">${auction.status}</td>
+					ddddddddddddddd
 					<td align="right"><spring:url
 							value="/auction/bid/${auction.id}" var="auctionApprove" />
 							<a type="button" class="buttonUrl" href="${auctionApprove}">Edit</a>

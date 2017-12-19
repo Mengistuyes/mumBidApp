@@ -8,7 +8,33 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <%@ include file="header.jsp"%>
-</head>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+		<script type="text/javascript"
+	src="<spring:url value="src/main/webapp/resources/js/adminAjaj.js"/>">
+	
+	$('approve').on('click', function () {
+
+		   $.ajax({
+		   type:'POST',
+		   url :"result",
+		   success: function(data) {
+		        console.log('success',data);
+		   },
+		   error:function(exception){alert('Exeption:'+exception);}
+		}); 
+		 e.preventDefault();
+		});
+	
+	</script>
+	</head>
 <body>
 
 <div class="panel panel-default">
@@ -35,15 +61,15 @@
 					<td width="160px">${auction.currentBidAmount}</td>
 					<td width="120px">${auction.status}</td>
 					<td align="right"><spring:url
-							value="/auction/approve/${auction.id}" var="auctionApprove" />
+							value="/auction/getApprovedById/${auction.id}" var="auctionApprove" />
 						<a type="button" class="buttonUrl" href="${auctionApprove}">Edit</a>
 						<spring:url value="/auction/reject/${auction.id}"
 							var="notApproved" /> <a type="button" class="buttonUrl"
 						href="${notApproved}">Cancel</a></td>
 					<td><button onclick="approve(${auction.id})">Approve</button></td>
+					
 				</tr>
 			</c:forEach>
-
 		</table>
 </div>
 <%@ include file="footer.jsp"%>

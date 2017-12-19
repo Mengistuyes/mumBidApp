@@ -1,6 +1,7 @@
 package mum.edu.cs544.mumBidApp.controller;
 
 import java.io.File;
+import java.util.Calendar;
 import java.util.List;
 import java.util.UUID;
 
@@ -59,6 +60,15 @@ public class AuctionController {
 		return "auctionForm";
 	}
 	
+	@RequestMapping(value = "/auction/getApprovedById/{id}", method = RequestMethod.GET)
+	public String getApprovedAuctionById(@PathVariable("id") Long id, Model model,
+		@ModelAttribute("updateAuctionStatus") Auction auction) {
+		auction = auctionService.getAuction(id);
+		model.addAttribute("status", auction);
+		model.addAttribute("id", auction.getId());
+		return "updateAuctionStatusForm";
+	}
+	
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String addAuction(@Valid @ModelAttribute("addNewAuction") Auction auction, BindingResult result,
 			Model model, HttpServletRequest request, RedirectAttributes redirectAttributes) {
@@ -79,14 +89,20 @@ public class AuctionController {
 
 			throw new fileUploadException("Saving the image was not successful", ex);
 		}
+		
 	}
 		//	auction.setImagePath(servletContext.getServletContextName() + "/mumBidApp/src/main/webapp/resources/images/" + auction.getId() + ".jpg");
 		auction.setImageName(randomUUIDString);
 		auction.setImagePath(servletContext.getServletContextName() + "/resources/images/" + randomUUIDString + ".jpg");
 		auction = auctionService.saveAuction(auction);
 
-		return "redirect:/auction/add/" + auction.getId();
-
+		model.addAttribute("ItemName", auction.getItem());
+        model.addAttribute("ItemDescription", auction.getItemDescription());
+        model.addAttribute("MinimumBidAmount", auction.getMinimumBidAmount());
+        model.addAttribute("expectedPrice", auction.getExpectedPrice());
+        
+		//return "redirect:/auction/add/" + auction.getId();
+		return "successfulMessage";
 }
   
 	@RequestMapping(value = { "/activeAuctions" }, method = RequestMethod.GET)
@@ -115,3 +131,16 @@ public class AuctionController {
 		return auctionService.rejectAuction(auctionId);
 	}
 }
+
+
+/*Calendar now = Calendar.getInstance();
+		now.set(Calendar.HOUR_OF_DAY, 9);
+		now.set(Calendar.MINUTE, 00);
+		now.set(Calendar.SECOND, 00);
+		now.add(Calendar.DAY_OF_MONTH, 2);
+
+		auction.setStartDate(now.getTime());
+		now.add(Calendar.DAY_OF_MONTH, 3);
+		now.set(Calendar.HOUR_OF_DAY, 16);
+
+		auction.setEndDate(now.getTime());*/

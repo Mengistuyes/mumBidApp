@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -17,28 +18,21 @@ import mum.edu.cs544.mumBidApp.model.Auction;
 import mum.edu.cs544.mumBidApp.model.Bid;
 import mum.edu.cs544.mumBidApp.service.AuctionServiceImpl;
 import mum.edu.cs544.mumBidApp.service.BidServiceImpl;
+import mum.edu.cs544.mumBidApp.service.IAuctionService;
 import mum.edu.cs544.mumBidApp.service.IBidService;
 
+@Controller
 public class BidController {
-	private IBidService bidService;
-	//Active 
-	@RequestMapping(value = { "/bid" }, method = RequestMethod.GET)
-	public String activeAuction(Model model) {
-		//List<Bid> bids = bidService.get
-	//	model.addAttribute("bids", bids);
-		return "home";
-	}
-	
+	@Autowired
+	private IBidService bidServiceImpl;
 	
 	@Autowired
-	AuctionServiceImpl auctionServiceImpl;
-
-	@Autowired
-	BidServiceImpl bidServiceImpl;
-
+	IAuctionService auctionServiceImpl;
+		
 	@RequestMapping(value = "/auction/bid/{auctionId}", method = RequestMethod.GET)
 	public String getAuctionDetail(@ModelAttribute("newBid") Bid bid, @PathVariable("auctionId") Long auctionId,
 			Model model) {
+		//System.out.println("****************************************************");
 		Auction auction = auctionServiceImpl.getAuction(auctionId);
 		bid.setAuction(auction);
 		model.addAttribute("auction", auction);

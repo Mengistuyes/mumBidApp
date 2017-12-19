@@ -16,16 +16,36 @@
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script>
-  $( function() {
+   $( function() {
     $( "#startDate" ).datepicker();
   } );
   
   $( function() {
 	  $( "#endDate" ).datepicker();
-   } );
+   } );  
   
+   /* $(function () {
+	    $('#startDate').datetimepicker({
+	        use24hours: true,
+	        format: 'HH:mm'
+	    });
+	});
+  
+  $(function () {
+	    $('#endDate').datetimepicker({
+	        use24hours: true,
+	        format: 'HH:mm'
+	    });
+	});
+  
+   $('#startDate').datetimepicker({
+	   format : 'DD/MM/YYYY HH:mm'
+	});
 
-  </script>
+  $('#endDate').datetimepicker({
+	   format : 'DD/MM/YYYY HH:mm'
+	});
+ */  </script>
   
 <style>
  
@@ -56,6 +76,15 @@
 			<label for="minimumBidAmount">Minimum Bid Amount: </label>
 				<form:input path="minimumBidAmount" />
 			</div>
+			
+			<div class="form-group">
+			<label for="expectedPrice">Expected Amount: </label>
+				<form:input path="expectedPrice" />
+			</div>
+			
+			<p>Date: <input type="text" id="startDate"></p>
+			<p>Date: <input type="text" id="endDate"></p>
+			
 			<div>
 			<p>
 					<label for="imagePath">Item Image</label>

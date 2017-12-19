@@ -11,19 +11,18 @@
 </head>
 <body>
 <form:form modelAttribute="newBid" action="" method="post">
-<div class="jumbotron">
+<div class="">
   <div class="container">
-   <p>Item Name: ${auction.Item}</p>
+   <p>Item Name: ${auction.item}</p>
    <p>Item Description: ${auction.itemDescription}</p>
    <p>Minimum Bid Amount: ${auction.minimumBidAmount}</p>
-   <p>Current Bid Amount: ${auction.currentBidAmount}</p>
-   
    <p>Started Date/Time: ${auction.startDate}</p>
    <p>End Date/Time: ${auction.endDate}</p>
    
    Auction Status: ${auction.status}
 				
   </div>
+  <div  class="jumbotron">
        <c:if test="${auction.status == 'ACTIVE'}">
 					<div>
 
@@ -41,6 +40,7 @@
 						</div>
 					</div>
 	    </c:if>
+</div>
 	   </div>
 	</form:form>
 </div>

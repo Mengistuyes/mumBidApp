@@ -3,6 +3,7 @@ package mum.edu.cs544.mumBidApp.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -27,5 +28,8 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 	}
 
-	
+	@Bean(name = "multipartResolver")
+    public CommonsMultipartResolver getMultipartResolver() {
+        return new CommonsMultipartResolver();
+    }
 }
