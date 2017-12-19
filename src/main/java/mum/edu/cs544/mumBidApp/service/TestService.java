@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import mum.edu.cs544.mumBidApp.DAO.TestDao;
-import mum.edu.cs544.mumBidApp.model.User;
+
 
 @Service
 public class TestService {
