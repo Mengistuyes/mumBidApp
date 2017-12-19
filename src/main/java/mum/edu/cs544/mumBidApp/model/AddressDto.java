@@ -8,17 +8,28 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 
-@Entity
-public class Address {
-	@Id
-	@GeneratedValue
-	private String id;
+public class AddressDto {
+
+	private int id;
 	private String street;
 	private String city;
 	private String state;
 	private String country;
-	@OneToMany(mappedBy="address")
-	private List<User> userList;
+
+	private List<RegisterUserDto> userList;
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public List<RegisterUserDto> getUserList() {
+		return userList;
+	}
+	public void setUserList(List<RegisterUserDto> userList) {
+		this.userList = userList;
+	}
 	public String getStreet() {
 		return street;
 	}
