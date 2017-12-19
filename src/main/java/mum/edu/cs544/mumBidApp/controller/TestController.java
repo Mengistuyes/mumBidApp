@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import mum.edu.cs544.mumBidApp.model.Response;
-import mum.edu.cs544.mumBidApp.model.User;
+
 import mum.edu.cs544.mumBidApp.service.TestService;
 
 @RestController
