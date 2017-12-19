@@ -1,5 +1,6 @@
 package mum.edu.cs544.mumBidApp.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -15,7 +16,9 @@ import javax.persistence.Transient;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 @Entity
-public class Auction {
+public class Auction implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	@Id @GeneratedValue
 	private long Id;
 	

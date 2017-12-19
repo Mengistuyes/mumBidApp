@@ -1,5 +1,6 @@
 package mum.edu.cs544.mumBidApp.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -13,18 +14,20 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 @Entity
-public class Bid {
+public class Bid implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue
 	private long id;
 	
 	@ManyToOne
 	private Auction auction;
-	
+	//@NotNull
 	private double bidAmount;
 
 	@Temporal(TemporalType.TIMESTAMP)
