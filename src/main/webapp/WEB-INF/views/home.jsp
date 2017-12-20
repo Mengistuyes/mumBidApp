@@ -26,6 +26,7 @@
 	        <a href="<spring:url value="add" />"><button type="button" class="btn btn-primary">Add Auction</button></a>
 	        <a href="<spring:url value="getAllAuctions" />"><button type="button" class="btn btn-success">This page displays All Auctions</button></a>
 	        <a href="<spring:url value="/auction/bid" />"><button type="button" class="btn btn-primary">Bidding Page</button></a></a>
+	        <a href="<spring:url value="/logout" />"><button type="button" class="btn btn-primary">Logout</button></a></a>
         </div>
         <div>
         <hr width=100%  align=left> 
