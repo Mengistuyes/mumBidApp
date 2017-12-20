@@ -32,8 +32,19 @@ public class BidController {
 	@RequestMapping(value = "/auction/bid/{auctionId}", method = RequestMethod.GET)
 	public String getAuctionDetail(@ModelAttribute("newBid") Bid bid, @PathVariable("auctionId") Long auctionId,
 			Model model) {
-		//System.out.println("****************************************************");
+
 		Auction auction = auctionServiceImpl.getAuction(auctionId);
+		/*if((auction.getCurrentBidAmount() != null) || (auction.getCurrentBidAmount() != 0.0))
+		{
+			//
+		}*/
+	/*	Bid myBid=bidServiceImpl.getMaxBid(auctionId);
+		if(myBid!=null)//has value
+		{
+			model.addAttribute("id", myBid.getId());
+			model.addAttribute("CurrentMaxAmount", myBid.getBidAmount());
+		}*/
+		
 		bid.setAuction(auction);
 		model.addAttribute("auction", auction);
 		return "biddingPage";
@@ -44,10 +55,20 @@ public class BidController {
 			BindingResult result, Model model, RedirectAttributes redirectAttributes) {
 		Auction auction = auctionServiceImpl.getAuction(auctionId);
 		bid.setAuction(auction);
-
+		
 		model.addAttribute("auction", auction);
-
-		bidServiceImpl.save(bid);
+		if(bid.getBidAmount()<auction.getCurrentBidAmount())
+		{
+			
+		}
+		else
+		{
+			bidServiceImpl.save(bid);
+			auction.setCurrentBidAmount(bid.getBidAmount());
+			auctionServiceImpl.updateAuction(auction);
+		}
+		
+		//auctionServiceImpl.saveAuction(auction);
 		return "redirect:/auction/bid/" + auctionId;
 	}
 }

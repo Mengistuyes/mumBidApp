@@ -14,4 +14,6 @@ public interface IBidService {
 
 	public Bid getBid(Long bidId);
 	
+	// public Bid getMaxBid(Long auctionId);
+	
 }

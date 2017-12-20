@@ -36,7 +36,7 @@
 	<c:forEach items="${auctions}" var="auction">
 	
 
-	<div class="row">
+	<div class="col-md-12">
 	<div class="col-md-3">
 		<div>Item Name:${auction.item}</div>
 		<div>Item Description:${auction.itemDescription}</div>		
@@ -45,8 +45,8 @@
 	<div class="col-md-3">
 		<img src="<c:url value="/resource/images/fridge.jpg"></c:url>" alt="fridge"/>	
 		<img src="<c:url value="/resources/images/Logo.jpg"></c:url>" alt="logo"/>
-		<div><spring:url value="/auction/bid/${auction.id}" var="ApprovedList" />
-		<a type="button" class="buttonUrl" href="${ApprovedList}">Go to Bidding -></a></div>
+		<div><spring:url value="/auction/bid/${auction.id}" var="auctionId" />
+		<a type="button" class="buttonUrl" href="${auctionId}">Go to Bidding -></a></div>
 	</div>
 	</div>
 	</c:forEach>

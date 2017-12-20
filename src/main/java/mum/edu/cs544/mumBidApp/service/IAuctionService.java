@@ -14,6 +14,8 @@ public interface IAuctionService {
 	
 	public List<Auction> getAllApprovedAuctions();
 	
+	public List<Auction> getAllActiveAuctions();
+	
 	public Auction saveAuction(Auction auction);
 
 	public Auction getAuction(Long auctionId);
@@ -25,6 +27,10 @@ public interface IAuctionService {
 	public Auction approveAuction(Auction auction);
 	
 	public List<Auction> findByStatus(String status);
+
+	List<Auction> getAllApprovedAndActive();
+	
+	public Auction updateAuction(Auction auction);
 	
 	
 	

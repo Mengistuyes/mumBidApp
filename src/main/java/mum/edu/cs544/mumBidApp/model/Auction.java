@@ -4,11 +4,14 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
@@ -51,6 +54,10 @@ public class Auction implements Serializable {
 	
 	private String imageName;
 	//private List<Bid> listOfBids;
+	
+	/*@OneToOne(cascade = CascadeType.REFRESH)
+	@JoinColumn(name="owner_id")
+	private User owner;*/
 	
 	public Auction()
 	{

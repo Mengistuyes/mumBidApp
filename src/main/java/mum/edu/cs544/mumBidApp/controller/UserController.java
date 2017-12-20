@@ -1,8 +1,10 @@
 package mum.edu.cs544.mumBidApp.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -83,6 +85,12 @@ public class UserController {
 		this.userValidator = userValidator;
 	}
 	
-	
+	@RequestMapping(value="/logout")
+	public String logOut(LoginUserDto loginUser, SecurityContextHolder sch, HttpServletRequest req) {
+		//req.logout();
+		sch.getContext().setAuthentication(null);
+		sch.clearContext();
+		return "login";
+	}
 	
 }

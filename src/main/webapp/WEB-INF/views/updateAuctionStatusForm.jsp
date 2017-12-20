@@ -28,7 +28,7 @@ $('#txtApprovedid option').click(function(){
 <body>
 <div class="jumbotron">
   <div class="container">
-  <form:form modelAttribute="status" action="/mumBidApp/approve/${id}" method="POST">	
+  <form:form modelAttribute="status" action="/approve/${id}" method="POST">	
    <p>Item Name: ${auction.item}</p>
    
    <p>Start Date: <input type="text" id="startDate"></p>

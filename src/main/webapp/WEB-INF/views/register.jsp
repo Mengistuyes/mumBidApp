@@ -8,7 +8,7 @@
  
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title> User Registration Form</title>
+    <title>Registration Form</title>
  
 <style>
  
@@ -23,9 +23,11 @@
  
     <h2>Registration Form</h2>
   
-    <form:form method="POST" commandName="user">
+    <form:form method="POST" commandName="registerUserDto" action="registerUser">
         <%-- <form:input type="hidden" path="id" id="id"/> --%>
         <table>
+         	<tr><td style="color: green">${successMsg}</td></tr>
+         	<tr><td style="color: red">${errMsg}</td></tr>
             <tr>
                 <td><label for="firstName">First Name: </label> </td>
                 <td><form:input path="firstName" id="firstName"/></td>
@@ -64,19 +66,20 @@
                 <td colspan="3">
                     <c:choose>
                         <c:when test="${edit}">
-                            <input type="submit" value="Update"/>
+                            <input type="submit" value="Update" />
                         </c:when>
                         <c:otherwise>
-                            <input type="submit" value="Register"/>
+                            <input type="submit" value="Register" onclick="registerUser"/>
                         </c:otherwise>
                     </c:choose>
                 </td>
             </tr>
+            
+           <tr><td>Already Registered, login</td><td><a href="login">HERE</a></td></tr>
         </table>
     </form:form>
     <br/>
     <br/>
-    Go back to <a href="<c:url value='/list' />">List of All Users</a>
+   <%--  Go back to <a href="<c:url value='/list' />">List of All Employees</a> --%>
 </body>
 </html>
-WEB-IN

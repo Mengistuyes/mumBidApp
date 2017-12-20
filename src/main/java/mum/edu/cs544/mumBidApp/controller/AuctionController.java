@@ -22,6 +22,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import mum.edu.cs544.mumBidApp.exception.fileUploadException;
 import mum.edu.cs544.mumBidApp.model.Auction;
 import mum.edu.cs544.mumBidApp.service.IAuctionService;
@@ -42,7 +44,7 @@ public class AuctionController {
 	
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public String homeAuction(Model model) {
-		List<Auction> auctions = auctionService.getAllApprovedAuctions();
+		List<Auction> auctions = auctionService.getAllApprovedAndActive();
 		model.addAttribute("auctions", auctions);
 		return "home";
 	}
@@ -78,7 +80,7 @@ public class AuctionController {
 		
 		UUID uuid = UUID.randomUUID();
         String randomUUIDString = uuid.toString();
-
+        //Not working
 		String imagePath = rootDirectory + "/resources/images/" + randomUUIDString + ".jpg";
 		
 		if (image != null && !image.isEmpty()) {
@@ -94,12 +96,24 @@ public class AuctionController {
 		//	auction.setImagePath(servletContext.getServletContextName() + "/mumBidApp/src/main/webapp/resources/images/" + auction.getId() + ".jpg");
 		auction.setImageName(randomUUIDString);
 		auction.setImagePath(servletContext.getServletContextName() + "/resources/images/" + randomUUIDString + ".jpg");
+		Calendar now1 = Calendar.getInstance();
+		Calendar now2 = Calendar.getInstance();
+		
+		//It is temporary
+		auction.setStartDate(now1.getTime());
+		now2.set(Calendar.HOUR_OF_DAY, 17);
+		auction.setEndDate(now2.getTime());
+		
 		auction = auctionService.saveAuction(auction);
 
 		model.addAttribute("ItemName", auction.getItem());
         model.addAttribute("ItemDescription", auction.getItemDescription());
         model.addAttribute("MinimumBidAmount", auction.getMinimumBidAmount());
         model.addAttribute("expectedPrice", auction.getExpectedPrice());
+        model.addAttribute("endDate1", auction.getEndDate());
+        
+       // ObjectMapper objectMapper = new ObjectMapper();
+        //result.addObject("endDate", objectMapper.writeValueAsString(auction.getEndDate());
         
 		//return "redirect:/auction/add/" + auction.getId();
 		return "successfulMessage";
@@ -108,8 +122,8 @@ public class AuctionController {
 	@RequestMapping(value = { "/activeAuctions" }, method = RequestMethod.GET)
 	public String activeAuction(Model model) {
 		System.out.println("activeAuctions");
-	//	List<Auction> auctions = auctionService.getAuctionByStatus();
 		List<Auction> auctions = auctionService.getAllApprovedAuctions();
+		//List<Auction> auctions = auctionService.getAllApprovedAuctions();
 		model.addAttribute("auctions", auctions);
 		return "home";
 	}

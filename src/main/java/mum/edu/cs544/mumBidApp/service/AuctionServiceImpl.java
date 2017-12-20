@@ -26,6 +26,11 @@ public class AuctionServiceImpl implements IAuctionService {
 	//	auction.setImagePath(auction.getImagePath() + auction.getId() + ".jpg");
 		return auctionDAO.save(auction);	
 	}
+	
+	@Transactional
+	public Auction updateAuction(Auction auction) {
+		return auctionDAO.save(auction);	
+	}
 	@Transactional
 	public Auction getAuction(Long auctionId) {
 		return auctionDAO.findOne(auctionId);
@@ -64,6 +69,15 @@ public class AuctionServiceImpl implements IAuctionService {
 	public List<Auction> getAllApprovedAuctions() {
 		return auctionDAO.getAllApprovedAuctions(AuctionStatus.APPROVED);	
 	}
+	
+	@Override
+	public List<Auction> getAllActiveAuctions() {
+		return auctionDAO.getAllApprovedAuctions(AuctionStatus.ACTIVE);	
+	}
 		
+	@Override
+	public List<Auction> getAllApprovedAndActive() {
+		return auctionDAO.getAllApprovedAndActive();	
+	}
 
 }

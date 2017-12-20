@@ -13,10 +13,71 @@
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<script>
-// Set the date we're counting down to
-var countDownDate = new Date("Dec 20, 2017 11:20:25").getTime();
 
+<%@ include file="header.jsp"%>
+
+</head>
+<body>
+<form:form modelAttribute="newBid" action="" method="post">
+<div class="">
+  <div class="container">
+  
+  <div class="col-md-6">
+	<div class="col-md-3">
+	 <p>Item Name: ${auction.item}</p>
+   <p>Item Description: ${auction.itemDescription}</p>
+   <p>Minimum Bid Amount: ${auction.minimumBidAmount}</p>
+	</div>
+	<div class="col-md-3">
+		<img src="<c:url value="/resource/images/Logo.jpg"></c:url>" alt="imagePlaceHolder"/>
+	</div>
+	  
+     <c:if test="${auction.status != 'ACTIVE'}">
+	<%-- 	<p>Started Date/Time: ${auction.startDate}</p>
+		<p>End Date/Time: ${auction.endDate}</p>  
+ --%>		
+  <div class="alert alert-danger" role="alert">
+ 		 Bid will start in <p id="timeExpired"></p>
+</div>  
+   </c:if>
+<%--    Auction Status: ${auction.status} --%>
+				
+  </div>
+  
+ 
+  <div  class="jumbotron">
+       <c:if test="${auction.status == 'ACTIVE'}">
+					<div>
+ <div class="alert alert-success" role="alert">
+  harry up! Bid expires in <p id="timeExpired"></p>
+</div>  
+						<div>
+							<div>
+								<%-- <label>Current Max Bid:</label> <strong>${CurrentMaxAmount }</strong> --%>
+								<label>Current Max Bid:</label> <strong>${auction.currentBidAmount }</strong>
+								
+							</div>
+
+							<p>
+								<label for="bidAmount">Next Bid: </label>
+								<form:input path="bidAmount" />
+								<form:errors path="bidAmount" cssStyle="color : red;" />
+							</p>
+							<input type="submit" value="Bid" class="buttonUrl" />
+							
+						</div>
+					</div>
+	    </c:if>
+</div>
+	   </div>
+	</form:form>
+	
+	<script>
+// Set the date we're counting down to
+/* var countDownDate = new Date("Dec 20, 2017 11:20:25").getTime(); */
+/* var countDownDate = new Date("${auction.endDate}"); */
+
+var countDownDate = ${endDate1};
 // Update the count down every 1 second
 var x = setInterval(function() {
 
@@ -43,60 +104,6 @@ var x = setInterval(function() {
     }
 }, 1000);
 </script>
-<%@ include file="header.jsp"%>
-
-</head>
-<body>
-<form:form modelAttribute="newBid" action="" method="post">
-<div class="">
-  <div class="container">
-  
-  <div class="col-md-6">
-	<div class="col-md-3">
-	 <p>Item Name: ${auction.item}</p>
-   <p>Item Description: ${auction.itemDescription}</p>
-   <p>Minimum Bid Amount: ${auction.minimumBidAmount}</p>
-	</div>
-	<div class="col-md-3">
-		<img src="<c:url value="/resource/images/fridge.jpg"></c:url>" alt="fridge"/>
-	</div>
-	  
-     <c:if test="${auction.status != 'ACTIVE'}">
-	<%-- 	<p>Started Date/Time: ${auction.startDate}</p>
-		<p>End Date/Time: ${auction.endDate}</p>  
- --%>		
-  <div class="alert alert-danger" role="alert">
- 		 Bid will start in <p id="timeExpired"></p>
-</div>  
-   </c:if>
-<%--    Auction Status: ${auction.status} --%>
-				
-  </div>
-  
- 
-  <div  class="jumbotron">
-       <c:if test="${auction.status == 'ACTIVE'}">
-					<div>
- <div class="alert alert-success" role="alert">
-  harry up! Bid expires in <p id="timeExpired"></p>
-</div>  
-						<div>
-							<div>
-								<label>Current Max Bid:</label> <strong>${auction.currentBidAmount }</strong>
-							</div>
-
-							<p>
-								<label for="bidAmount">Next Bid: </label>
-								<form:input path="bidAmount" />
-								<form:errors path="bidAmount" cssStyle="color : red;" />
-							</p>
-							<input type="submit" value="Bid" class="buttonUrl" />
-						</div>
-					</div>
-	    </c:if>
-</div>
-	   </div>
-	</form:form>
 </div>
 <%@ include file="footer.jsp"%>
 </body>

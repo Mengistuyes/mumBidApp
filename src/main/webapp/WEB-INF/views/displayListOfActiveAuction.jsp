@@ -43,7 +43,6 @@
 					<td width="160px">${auction.startDate}</td>
 					<td width="160px">${auction.endDate}</td>
 					<td width="120px">${auction.status}</td>
-					ddddddddddddddd
 					<td align="right"><spring:url
 							value="/auction/bid/${auction.id}" var="auctionApprove" />
 							<a type="button" class="buttonUrl" href="${auctionApprove}">Edit</a>

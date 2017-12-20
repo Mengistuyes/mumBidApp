@@ -15,19 +15,24 @@ import mum.edu.cs544.mumBidApp.model.Bid;
 public class BidServiceImpl implements IBidService {
 	@Autowired
 	IBidDAO bidDAO;
-	
+	@Override
 	public List<Bid> getAllBid() {
 		return (List<Bid>)bidDAO.findAll();
 	}
-
+	@Override
 	public void save(Bid bid) {
 		Auction auction=bid.getAuction();
 		auction.setCurrentBidAmount(bid.getBidAmount());
 		bidDAO.save(bid);
 	}
-
+	@Override
 	public Bid getBid(Long bidId) {	
-		return bidDAO.findOne(bidId);
+		return bidDAO.findOne(bidId); 
 	}
+	
+	/*@Override
+	public Bid getMaxBid(Long auctionId) {
+		return bidDAO.getMaxBid(auctionId);
+	}*/
 
 }

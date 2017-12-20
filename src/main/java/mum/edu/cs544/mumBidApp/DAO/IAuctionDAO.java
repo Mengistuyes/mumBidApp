@@ -24,7 +24,9 @@ public interface IAuctionDAO extends JpaRepository<Auction, Long> {
 
 	public List<Auction> findByStatus(AuctionStatus status);
 
-
+	@Query("Select a from Auction a where a.status = 'APPROVED' OR  a.status = 'ACTIVE'")
+    public List<Auction> getAllApprovedAndActive();
+	
 	//public Auction getAuction(Long auctionId);
 	
 	//public List<Auction> getAuctionByStatus();
