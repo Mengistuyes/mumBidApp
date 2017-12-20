@@ -1,6 +1,5 @@
 package mum.edu.cs544.mumBidApp.model;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -14,16 +13,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.multipart.MultipartFile;
 @Entity
-public class Auction implements Serializable {
-	
-	private static final long serialVersionUID = 1L;
+public class Auction {
 	@Id @GeneratedValue
-	private long Id;
+	private int Id;
 	
 	private String item;
 	
@@ -37,22 +32,13 @@ public class Auction implements Serializable {
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
 	private Date endDate;
 	
-	private Double minimumBidAmount;
+	private Double InitialPrice;
 	
-	private Double expectedPrice;
-	
-	private Double currentBidAmount;
+	private Double ExpectedPrice;
 	
 	@Enumerated(EnumType.STRING)
-	private AuctionStatus status;
+	private String AuctionStatus;
 	
-	private String imagePath;
-	
-	@Transient
-	private MultipartFile image;
-	
-	
-	private String imageName;
 	//private List<Bid> listOfBids;
 	
 	/*@OneToOne(cascade = CascadeType.REFRESH)
@@ -64,11 +50,11 @@ public class Auction implements Serializable {
 		
 	}
 
-	public long getId() {
+	public int getId() {
 		return Id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		Id = id;
 	}
 
@@ -104,71 +90,30 @@ public class Auction implements Serializable {
 		this.endDate = endDate;
 	}
 
-	public Double getCurrentBidAmount() {
-		return currentBidAmount;
-	}
-
-	public void setCurrentBidAmount(Double currentBidAmount) {
-		currentBidAmount = currentBidAmount;
-	}
-
-	public AuctionStatus getStatus() {
-		return status;
-	}
-
-	public void setStatus(AuctionStatus status) {
-		this.status = status;
-	}
-
-	public Double getMinimumBidAmount() {
-		return minimumBidAmount;
-	}
-
-	public void setMinimumBidAmount(Double minimumBidAmount) {
-		this.minimumBidAmount = minimumBidAmount;
+	public Double getInitialPrice() {
+		return InitialPrice;
 	}
 
 	public Double getExpectedPrice() {
-		return expectedPrice;
+		return ExpectedPrice;
 	}
 
 	public void setExpectedPrice(Double expectedPrice) {
-		this.expectedPrice = expectedPrice;
+		ExpectedPrice = expectedPrice;
 	}
 
-	public AuctionStatus getAuctionStatus() {
-		return status;
+	public void setInitialPrice(Double initialPrice) {
+		InitialPrice = initialPrice;
 	}
 
-	public void setAuctionStatus(AuctionStatus auctionStatus) {
-		status = auctionStatus;
+	public String getAuctionStatus() {
+		return AuctionStatus;
 	}
 
-	public String getImagePath() {
-		return imagePath;
+	public void setAuctionStatus(String auctionStatus) {
+		AuctionStatus = auctionStatus;
 	}
 
-	public void setImagePath(String imagePath) {
-		this.imagePath = imagePath;
-	}
-
-	public MultipartFile getImage() {
-		return image;
-	}
-
-	public void setImage(MultipartFile image) {
-		this.image = image;
-	}
-
-	public String getImageName() {
-		return imageName;
-	}
-
-	public void setImageName(String imageName) {
-		this.imageName = imageName;
-	}
-
-	
 	/*public List<Bid> getListOfBids() {
 		return listOfBids;
 	}

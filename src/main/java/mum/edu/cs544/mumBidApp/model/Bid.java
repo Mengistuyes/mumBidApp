@@ -1,10 +1,12 @@
 package mum.edu.cs544.mumBidApp.model;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
+<<<<<<< HEAD
 import javax.persistence.Entity;
+=======
+>>>>>>> 5dae028eaf1b86ea5669c91aaccf716fd01dac1e
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,10 +19,14 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
+<<<<<<< HEAD
 @Entity
 public class Bid implements Serializable {
+=======
+
+public class Bid {
+>>>>>>> 5dae028eaf1b86ea5669c91aaccf716fd01dac1e
 	
-	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue
 	private long id;
@@ -28,7 +34,7 @@ public class Bid implements Serializable {
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)// I will implemented
 	//@ManyToOne
 	private Auction auction;
-	//@NotNull
+	
 	private double bidAmount;
 
 	@Temporal(TemporalType.TIMESTAMP)
